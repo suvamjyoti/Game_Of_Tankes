@@ -95,29 +95,6 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-
-//`````````````````````````````````````````````````````````````````````````````````````````````````````
-//`````````````````````````````````````````````````````````````````````````````````````````````````````
-
-    // internal void StartChasing(){
-    //     if(Vector3.Distance(m_target.position,transform.position)<m_proximityRadius){
-    //        m_activeStateOfTank = StateType.Chase; 
-    //     }
-    //     else{
-    //         //continue in patrol
-    //     }
-    // }
-
-    // internal void AttackPlayer(){
-
-    // }
-
-//`````````````````````````````````````````````````````````````````````````````````````````````````````
-//`````````````````````````````````````````````````````````````````````````````````````````````````````
-
-
-
-
     private void OnDrawGizmos() {
 
         Gizmos.color = Color.yellow;
