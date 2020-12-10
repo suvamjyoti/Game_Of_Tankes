@@ -16,14 +16,12 @@ public class StateChase : EnemyTankState
     {
         base.OnEnterState();
         enemyManager = GetComponent<EnemyManager>();
-        Debug.Log("enemy Chase state Enter-------->");
         chasing = StartCoroutine(chasePlayer());
     }
 
     public override void OnExitState()
     {
         base.OnExitState();
-        Debug.Log("enemy chase state Exit-------->");
         StopCoroutine(chasing);
     }
 

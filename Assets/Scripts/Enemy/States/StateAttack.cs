@@ -17,13 +17,11 @@ public class StateAttack : EnemyTankState
 
     public override void OnEnterState(){
         base.OnEnterState();
-        Debug.Log("Enemy Attack State enter---------------->");
         StartCoroutine(TurnToFace(player.position));
     }
 
     public override void OnExitState(){
         base.OnExitState();
-        Debug.Log("Enemy Attack State exit---------------->");
     }
 
 //`````````````````````````````````````````````````````````````````````````````````````````````````````
