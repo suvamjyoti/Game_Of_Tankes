@@ -7,21 +7,21 @@ public class AchievementService : MonoBehaviour
     public event Action OnFire;
     
     private bool isDeadInvoked=false;
-    private int NoOfEnemyKilled=0;
-    private int currentEnemyKilled=0;
+    // private int NoOfEnemyKilled=0;
+    // private int currentEnemyKilled=0;
 
-    [SerializeField]private EnemyHealth[] enemyList;
+    [SerializeField]private EnemyHealth enemyList;
     [SerializeField]private TankShoot playerFire;
 
     private void Update() {
-        foreach(var _enemy in enemyList){
-            if(_enemy.IsDead){
-                currentEnemyKilled++;
-                Debug.Log("Killed");
-            }
-        }
+        // foreach(var _enemy in enemyList){
+        //     if(_enemy.IsDead){
+        //         currentEnemyKilled++;
+        //         Debug.Log("Killed");
+        //     }
+        // }
 
-        if(NoOfEnemyKilled>=2){
+        if(EnemyHealth.NoOfEnemyKilled>=2){
             OnDeath?.Invoke();
         }
 
