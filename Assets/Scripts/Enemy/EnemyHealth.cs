@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyHealth : TankHealth{
 
     public static int NoOfEnemyKilled=0;
+    public static int KillScore=0;
 
     protected override void PlayerDead(){
 
         NoOfEnemyKilled++;
+        KillScore+=10;
         base.PlayerDead();
         IsDead = true;
         if(explosionCoroutine==null){

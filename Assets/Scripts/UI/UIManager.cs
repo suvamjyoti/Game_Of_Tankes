@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour{
-
-    private int NoOfEnemiesKilled=0;
 
     [SerializeField]private AchievementService AchievementService;
     [SerializeField]private GameObject WolfUI;
     [SerializeField]private GameObject DragonUI;
+
+    [SerializeField]private TMP_Text Score;
     
 //```````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````
@@ -21,19 +22,31 @@ public class UIManager : MonoBehaviour{
 //```````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````
 
+    private void Update() {
+        
+        Score.text  = EnemyHealth.KillScore.ToString();
+
+    }
+
+//```````````````````````````````````````````````````````````````````````````````````
+//```````````````````````````````````````````````````````````````````````````````````
+
     private void WolfAchievement(){
         
-        Debug.Log("yeahKilled");
         WolfUI.SetActive(true);
         StartCoroutine(DisableUI(WolfUI));
     }
 
     private void KhaleesiAchievement(){
         
-        Debug.Log("fire fire fire Away");
         DragonUI.SetActive(true);
         StartCoroutine(DisableUI(DragonUI));
     }
+
+//```````````````````````````````````````````````````````````````````````````````````
+//```````````````````````````````````````````````````````````````````````````````````
+
+
 
 //```````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````
