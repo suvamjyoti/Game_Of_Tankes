@@ -6,6 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour{
 
     [SerializeField]private AchievementService AchievementService;
+    [SerializeField]private ReplayButton replayButton;
     [SerializeField]private GameObject WolfUI;
     [SerializeField]private GameObject DragonUI;
 
@@ -17,6 +18,9 @@ public class UIManager : MonoBehaviour{
     private void Start() {
         AchievementService.OnDeath+=WolfAchievement;
         AchievementService.OnFire+=KhaleesiAchievement;
+
+        replayButton.OnReplay+=ResetUi;
+
     }
 
 //```````````````````````````````````````````````````````````````````````````````````
@@ -24,7 +28,9 @@ public class UIManager : MonoBehaviour{
 
     private void Update() {
         
-        Score.text  = EnemyHealth.KillScore.ToString();
+        if(EnemyHealth.KillScore.ToString()!=Score.text){
+            Score.text  = EnemyHealth.KillScore.ToString();
+        }
 
     }
 
@@ -43,11 +49,10 @@ public class UIManager : MonoBehaviour{
         StartCoroutine(DisableUI(DragonUI));
     }
 
-//```````````````````````````````````````````````````````````````````````````````````
-//```````````````````````````````````````````````````````````````````````````````````
-
-
-
+    private void ResetUi(){
+        EnemyHealth.KillScore = 0;
+        EnemyHealth.NoOfEnemyKilled=0;
+    }
 //```````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````
 

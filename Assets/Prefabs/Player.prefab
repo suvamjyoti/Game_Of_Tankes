@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85966b06c39d6fe4ab3add68517a5e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 20
+  MoveSpeed: 15
   rotateSpeed: 180
 --- !u!114 &359256969
 MonoBehaviour:
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 0}
   m_FireTransform: {fileID: 6646379082159204356}
-  m_MinLaunchForce: 20
-  m_MaxLaunchForce: 40
+  m_MinLaunchForce: 15
+  m_MaxLaunchForce: 30
   m_MaxChargeTime: 0.75
   CurrentCount: 0
 --- !u!1 &6646379082128199640
