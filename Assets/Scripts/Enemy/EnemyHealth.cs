@@ -10,7 +10,7 @@ public class EnemyHealth : TankHealth{
     protected override void PlayerDead(){
 
         NoOfEnemyKilled++;
-        KillScore+=10;
+        KillScore++;
         base.PlayerDead();
         IsDead = true;
         if(explosionCoroutine==null){

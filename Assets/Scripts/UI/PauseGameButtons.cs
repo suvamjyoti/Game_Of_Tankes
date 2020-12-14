@@ -11,10 +11,12 @@ public class PauseGameButtons : MonoBehaviour
     [SerializeField]private Button ExitButton;
     [SerializeField]private GameObject PauseUI;
 
+    [SerializeField]private Player player;
+
     void Start(){
 
         ResumeButton.onClick.AddListener(StartGame);
-        SaveButton.onClick.AddListener(LoadGame);
+        SaveButton.onClick.AddListener(SaveGame);
         ExitButton.onClick.AddListener(ExitGame);
     }
 
@@ -23,8 +25,8 @@ public class PauseGameButtons : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void LoadGame(){
-        //Load Game mecha
+    private void SaveGame(){
+        player.SaveGame();
     }
 
     private void ExitGame(){

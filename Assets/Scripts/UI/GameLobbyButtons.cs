@@ -11,6 +11,7 @@ public class GameLobbyButtons : MonoBehaviour{
     [SerializeField]private Button ExitButton;
 
     [SerializeField]private GameObject gameLobbyUI;
+    [SerializeField]private Player player;
 
     void Start(){
 
@@ -24,7 +25,7 @@ public class GameLobbyButtons : MonoBehaviour{
     }
 
     private void LoadGame(){
-        //Load Game mecha
+        player.LoadGame();
     }
 
     private void ExitGame(){

@@ -16,8 +16,6 @@ public class TankShoot : MonoBehaviour
     private float m_ChargeSpeed;                
     protected bool m_Fired;
     public int CurrentCount=0;
-    //private bool isReloading=false;
-    //private Coroutine Reload;
 
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -62,31 +60,11 @@ public class TankShoot : MonoBehaviour
 
     public virtual void Fire ()
     {
-        //if(!isReloading){
-            //isReloading = true;
-            CurrentCount++;
-            m_Fired = true;                                                                                     // Set the fired flag so Fire is only called once.
-            Rigidbody shellInstance = (objectPool.spawner("Shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
-            shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;                            // Set the shell's velocity 
-        //}
 
-        // if(Reload==null){
-        //     Reload = StartCoroutine(ReloadShell());
-        // }
-        // else{
-        //     Debug.Log("Wait for reload");
-        // }
-        
+        CurrentCount++;
+        m_Fired = true;                                                                                     // Set the fired flag so Fire is only called once.
+        Rigidbody shellInstance = (objectPool.spawner("Shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
+        shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;                            // Set the shell's velocity    
     }
-
-//```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
-//```````````````````````````````````````````````````````````````````````````````````````````````````````Reload Mechanics
-
-    // private IEnumerator ReloadShell(){
-    //     Debug.Log("Reloading");
-    //     yield return new WaitForSeconds(5);
-    //     isReloading = false;
-    //     Reload = null;
-    // }
 
 }
