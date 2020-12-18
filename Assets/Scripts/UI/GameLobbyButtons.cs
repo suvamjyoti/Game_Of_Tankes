@@ -26,6 +26,7 @@ public class GameLobbyButtons : MonoBehaviour{
 
     private void LoadGame(){
         player.LoadGame();
+        gameLobbyUI.SetActive(false);
     }
 
     private void ExitGame(){
