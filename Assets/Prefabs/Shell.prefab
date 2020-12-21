@@ -191,3 +191,4 @@ MonoBehaviour:
     m_Bits: 256
   m_MaxDamage: 25
   m_ExplosionRadius: 5
+  shell_explosionPrefab: {fileID: 0}

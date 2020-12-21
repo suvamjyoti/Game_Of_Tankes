@@ -18,18 +18,21 @@ public class GameLobbyButtons : MonoBehaviour{
         PlayButton.onClick.AddListener(StartGame);
         LoadButton.onClick.AddListener(LoadGame);
         ExitButton.onClick.AddListener(ExitGame);
+        Time.timeScale = 0;
     }
 
     private void StartGame(){
         gameLobbyUI.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void LoadGame(){
         player.LoadGame();
+        Time.timeScale = 1;
         gameLobbyUI.SetActive(false);
     }
 
     private void ExitGame(){
-        //Application.Exit();
+        Application.Quit();
     }
 }

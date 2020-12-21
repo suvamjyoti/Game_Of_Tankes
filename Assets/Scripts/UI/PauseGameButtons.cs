@@ -30,7 +30,7 @@ public class PauseGameButtons : MonoBehaviour
     }
 
     private void ExitGame(){
-        //Application.Exit();
+        Application.Quit();
     }
 
 }

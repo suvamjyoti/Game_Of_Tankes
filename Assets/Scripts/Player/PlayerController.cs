@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 
-public class TankController : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 	
 	[SerializeField]private float MoveSpeed;
 	[SerializeField]private  float rotateSpeed;
-
-	//[SerializeField]private Joystick joystick;
 
 	private float vertical;
 	private float horizontal;
 	
 	private Rigidbody rigidbody;
+
+	public AudioSource m_MovementAudio;
+	public AudioClip m_EngineIdling;            
+    public AudioClip m_EngineDriving;           
+    public float m_PitchRange = 0.2f;
+	private float m_MovementInputValue;         
+    private float m_TurnInputValue;             
+    private float m_OriginalPitch; 
 
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -20,6 +26,16 @@ public class TankController : MonoBehaviour {
 		//joystick=FindObjectOfType<Joystick>();
 		rigidbody=GetComponent<Rigidbody>();
 	}
+
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+	private void Start() {
+		m_OriginalPitch = m_MovementAudio.pitch;	//store original pitch
+		m_MovementInputValue = 0f;
+        m_TurnInputValue = 0f;
+	}
+
 
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -48,6 +64,11 @@ public class TankController : MonoBehaviour {
 			
 		}
 
+		m_MovementInputValue = vertical;
+		m_TurnInputValue = horizontal;
+
+		EngineAudio ();
+
 	}
 
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -72,6 +93,31 @@ public class TankController : MonoBehaviour {
 			rigidbody.MoveRotation(rigidbody.rotation*rotateTank);
 		}
 	}
+
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+	private void EngineAudio ()
+    {
+        if (Mathf.Abs (m_MovementInputValue) < 0.1f && Mathf.Abs (m_TurnInputValue) < 0.1f)
+        {
+            if (m_MovementAudio.clip == m_EngineDriving)
+            {
+                m_MovementAudio.clip = m_EngineIdling;
+                m_MovementAudio.pitch = Random.Range (m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
+                m_MovementAudio.Play ();
+            }
+        }
+        else
+        {
+            if (m_MovementAudio.clip == m_EngineIdling)
+            {
+                m_MovementAudio.clip = m_EngineDriving;
+                m_MovementAudio.pitch = Random.Range(m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);
+                m_MovementAudio.Play();
+            }
+        }
+    }
 
 
 }

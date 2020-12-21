@@ -5,7 +5,7 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField]private List<EnemyTankState> states = new List<EnemyTankState>();
     [SerializeField]private float m_proximityRadius;
-    [SerializeField]private Transform m_target;
+    internal Transform m_target;
 
     private EnemyTankState m_currentState;
     private StateType m_activeStateOfTank=StateType.Patrol;
@@ -16,12 +16,22 @@ public class EnemyManager : MonoBehaviour
     private bool isAlive=true;
     private EnemyHealth enemyHealth;
 
+    internal static int No_OfActiveEnemy=0;
+
 //`````````````````````````````````````````````````````````````````````````````````````````````````````
 //`````````````````````````````````````````````````````````````````````````````````````````````````````
     private void Start() {
+
         enemyHealth = GetComponent<EnemyHealth>();
         m_attackRadius = m_proximityRadius/2;
         startingPosition = transform.position;
+        No_OfActiveEnemy++;
+    }
+
+    private void Awake() {
+        
+        m_target = FindObjectOfType<Player>().transform;
+
     }
 
     private void Update() {

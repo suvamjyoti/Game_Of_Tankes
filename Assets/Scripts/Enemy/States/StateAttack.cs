@@ -5,18 +5,23 @@ using UnityEngine;
 public class StateAttack : EnemyTankState
 {
     [SerializeField]private float m_turnSpeed;
-    [SerializeField]private Transform player;
+    private Transform player;
 
-    [SerializeField]ObjectPool objectPool;
+    private ObjectPool objectPool;
     [SerializeField]private float m_launchForce = 30f;
     [SerializeField]Transform m_FireTransform;
     [SerializeField]private int NoOfShellFired;
+
+    private EnemyManager enemyManager;
 
 //`````````````````````````````````````````````````````````````````````````````````````````````````````
 //`````````````````````````````````````````````````````````````````````````````````````````````````````
 
     public override void OnEnterState(){
         base.OnEnterState();
+        objectPool = FindObjectOfType<ObjectPool>();
+        enemyManager = GetComponent<EnemyManager>();
+        player = enemyManager.m_target;
         StartCoroutine(TurnToFace(player.position));
     }
 

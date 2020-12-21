@@ -8,7 +8,6 @@ public class ReplayButton : MonoBehaviour
     private Button m_replayButton;
     public event Action OnReplay;
 
-    [SerializeField]private GameObject gameLobbyUI;
     
     private void Start(){
         m_replayButton = GetComponent<Button>();
