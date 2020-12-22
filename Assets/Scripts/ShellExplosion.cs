@@ -1,10 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ShellExplosion : MonoBehaviour
 {
     public LayerMask m_TankMask;                        // Used to filter what the explosion affects,layer should be set to "Players".
     public float m_MaxDamage = 25f;                    // The amount of damage done if the explosion is centred on a tank.
     public float m_ExplosionRadius = 5f;                // The maximum distance away from the explosion tanks can be and are still affected.
+
+    public float m_MaxLifeTime = 10f;
+
+
+    public ParticleSystem m_ExplosionParticles;         
+    public AudioSource m_ExplosionAudio;
+    
+    private IEnumerator shell_ExplosionCoroutine;
+
+// ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+// ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+    private void Start() {
+        
+    }
 
 // ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -27,7 +43,11 @@ public class ShellExplosion : MonoBehaviour
             }
         }
 
-        gameObject.SetActive(false);                                                    // Deactivate the shell
+        if(shell_ExplosionCoroutine==null){
+
+            shell_ExplosionCoroutine = shell_Explosion();
+            StartCoroutine(shell_ExplosionCoroutine);
+        }
 
     }
 
@@ -46,4 +66,24 @@ public class ShellExplosion : MonoBehaviour
         damage = Mathf.Max (0f, damage);                                                        // Make sure that the minimum damage is always 0 not -ve.
         return damage;
     }
+
+// ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+// ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+    private IEnumerator shell_Explosion(){
+        m_ExplosionParticles.Play();
+        m_ExplosionAudio.Play();
+        yield return new WaitForSeconds(m_ExplosionParticles.duration);
+        gameObject.SetActive(false);
+        shell_ExplosionCoroutine=null;  
+    }
+
+    private IEnumerator shell_lifetime(){
+
+        yield return new WaitForSeconds(m_MaxLifeTime);
+        gameObject.SetActive(false); 
+        shell_ExplosionCoroutine=null;
+    }
+
+
 }

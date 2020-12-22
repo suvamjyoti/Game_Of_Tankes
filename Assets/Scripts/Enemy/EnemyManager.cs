@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     private void Start() {
 
         enemyHealth = GetComponent<EnemyHealth>();
-        m_attackRadius = m_proximityRadius/2;
+        m_attackRadius = m_proximityRadius/1.5f;
         startingPosition = transform.position;
         No_OfActiveEnemy++;
     }
@@ -112,7 +112,7 @@ public class EnemyManager : MonoBehaviour
 
         //attackRadius
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, m_proximityRadius/2);
+        Gizmos.DrawWireSphere(transform.position, m_proximityRadius/1.5f);
         
     }
 }

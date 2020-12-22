@@ -17,6 +17,10 @@ public class TankShoot : MonoBehaviour
     protected bool m_Fired;
     public int CurrentCount=0;
 
+    public AudioSource m_ShootingAudio;         
+    public AudioClip m_ChargingClip;            
+    public AudioClip m_FireClip;  
+
 
 
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -49,6 +53,9 @@ public class TankShoot : MonoBehaviour
         else if (Input.GetButton ("Fire") && !m_Fired)                                                          //fire button is held,the shell hasn't been launched 
         {
             m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;                                             //Increment the launch force.
+            
+            m_ShootingAudio.clip = m_ChargingClip;
+            m_ShootingAudio.Play ();
         }
         
         else if (Input.GetButtonUp ("Fire") && !m_Fired)                                                        //fire button is released,shell hasn't been launched
@@ -67,6 +74,9 @@ public class TankShoot : MonoBehaviour
         m_Fired = true;                                                                                     // Set the fired flag so Fire is only called once.
         Rigidbody shellInstance = (objectPool.spawner("Shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
         shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;                            // Set the shell's velocity    
+
+        m_ShootingAudio.clip = m_FireClip;
+        m_ShootingAudio.Play ();
     }
 
 }

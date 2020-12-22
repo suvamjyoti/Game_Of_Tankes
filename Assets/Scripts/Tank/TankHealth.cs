@@ -16,6 +16,9 @@ public class TankHealth : MonoBehaviour, IDamagable
     protected ParticleSystem explosionPrefab;
     protected Coroutine explosionCoroutine=null;
 
+     public AudioSource m_BlastAudio;         
+    public AudioClip m_tankExplosionAudioClip;
+
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
     internal float CurrentHealth=100f;
@@ -86,6 +89,8 @@ public class TankHealth : MonoBehaviour, IDamagable
 
     protected IEnumerator playerDeathEffects(){
         
+        m_BlastAudio.clip = m_tankExplosionAudioClip;
+        m_BlastAudio.Play();
         yield return StartCoroutine(playExplosionParticleSystem());
         gameObject.SetActive(false);
         explosionCoroutine = null;
