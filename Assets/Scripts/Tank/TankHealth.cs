@@ -18,7 +18,7 @@ public class TankHealth : MonoBehaviour, IDamagable
 
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
-    protected float CurrentHealth;
+    internal float CurrentHealth=100f;
     internal bool IsDead;
  
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -29,11 +29,15 @@ public class TankHealth : MonoBehaviour, IDamagable
         explosionPrefab = Instantiate(ExplosionPrefab).GetComponent<ParticleSystem>();
         explosionPrefab.gameObject.SetActive(false);
 
-        CurrentHealth=MaxHealth;
         IsDead=false;
-        SetHealthColor();
     }
 
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+//``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+    private void Update() {
+        SetHealthColor();
+    }
 
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -74,8 +78,7 @@ public class TankHealth : MonoBehaviour, IDamagable
         explosionPrefab.transform.position=transform.position;
         explosionPrefab.gameObject.SetActive(true);
         explosionPrefab.Play();
-        yield return new WaitForSeconds(explosionPrefab.duration);
-        
+        yield return null;
     }
 
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````

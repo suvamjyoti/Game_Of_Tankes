@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class StateChase : EnemyTankState
 {
-   [SerializeField]private Transform  target;
+   private Transform  target;
    [SerializeField]private NavMeshAgent agent;
 
    private Coroutine chasing;
@@ -16,14 +16,13 @@ public class StateChase : EnemyTankState
     {
         base.OnEnterState();
         enemyManager = GetComponent<EnemyManager>();
-        Debug.Log("enemy Chase state Enter-------->");
+        target = enemyManager.m_target;
         chasing = StartCoroutine(chasePlayer());
     }
 
     public override void OnExitState()
     {
         base.OnExitState();
-        Debug.Log("enemy chase state Exit-------->");
         StopCoroutine(chasing);
     }
 

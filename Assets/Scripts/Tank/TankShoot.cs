@@ -5,18 +5,19 @@ using UnityEngine.UI;
 public class TankShoot : MonoBehaviour
 {
 
-    [SerializeField]ObjectPool objectPool;
+    [SerializeField]protected ObjectPool objectPool;
 
     public Transform m_FireTransform;           
     public float m_MinLaunchForce = 15f;        
     public float m_MaxLaunchForce = 30f;        
     public float m_MaxChargeTime = 0.75f;       
 
-    private float m_CurrentLaunchForce;         
+    protected float m_CurrentLaunchForce;         
     private float m_ChargeSpeed;                
-    private bool m_Fired;
-    //private bool isReloading=false;
-    //private Coroutine Reload;
+    protected bool m_Fired;
+    public int CurrentCount=0;
+
+
 
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -59,32 +60,13 @@ public class TankShoot : MonoBehaviour
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
-    private void Fire ()
+    public virtual void Fire ()
     {
-        //if(!isReloading){
-            //isReloading = true;
-            m_Fired = true;                                                                                     // Set the fired flag so Fire is only called once.
-            Rigidbody shellInstance = (objectPool.spawner("Shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
-            shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;                            // Set the shell's velocity 
-        //}
 
-        // if(Reload==null){
-        //     Reload = StartCoroutine(ReloadShell());
-        // }
-        // else{
-        //     Debug.Log("Wait for reload");
-        // }
-        
+        CurrentCount++;
+        m_Fired = true;                                                                                     // Set the fired flag so Fire is only called once.
+        Rigidbody shellInstance = (objectPool.spawner("Shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
+        shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;                            // Set the shell's velocity    
     }
-
-//```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
-//```````````````````````````````````````````````````````````````````````````````````````````````````````Reload Mechanics
-
-    // private IEnumerator ReloadShell(){
-    //     Debug.Log("Reloading");
-    //     yield return new WaitForSeconds(5);
-    //     isReloading = false;
-    //     Reload = null;
-    // }
 
 }
