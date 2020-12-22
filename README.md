@@ -1,4 +1,4 @@
-![battle-tank-game](/Demo/Bannerlogo.png)
+![Game_Of_Tankes](/Demo/Bannerlogo.png)
 # Game_Of_Tankes
 
 Welcome! This is the repository for my first Unity3d game **Game_Of_Tankes**, an initiative where I learnt to create 3d games using unity while keeping in mind
