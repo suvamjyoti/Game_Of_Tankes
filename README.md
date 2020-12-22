@@ -15,3 +15,16 @@ various **Design_Patterns** such as
 * Shells From Object Pool
 * MiniMap
 * Achievement System
+
+This project is built on **Unity 2019.4.8f1 LTS** .
+
+## Check The Progress(Videos)
+* [Starting phase](https://www.linkedin.com/feed/update/urn:li:activity:6729030144813518848/).
+* [HealthSlider|ShellFire](https://www.linkedin.com/feed/update/urn:li:activity:6733012333188177920/).
+* [Object Pooling|StartedEnemyAI](https://www.linkedin.com/feed/update/urn:li:activity:6739061766719889408/).
+* [EnemyAIComplete](https://www.linkedin.com/feed/update/urn:li:activity:6740983927311265792/).
+* [AchievementSystem](https://www.linkedin.com/feed/update/urn:li:activity:6742766079782785024/).
+* [CompleteGame](https://www.linkedin.com/feed/update/urn:li:activity:6747005800683761664/).
+
+## Play the game
+Just want to try the game out? Head to the [Build Folder](https://drive.google.com/drive/folders/1baxsLvW1Dy6XAPKRDvpOobKwTZjGLI7N) and grab the version 1.0.
