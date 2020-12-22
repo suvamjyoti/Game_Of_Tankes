@@ -15,7 +15,7 @@ public class TankShoot : MonoBehaviour
     private float m_CurrentLaunchForce;         
     private float m_ChargeSpeed;                
     private bool m_Fired;
-    private bool isReloading=false;
+    //private bool isReloading=false;
     //private Coroutine Reload;
 
 //```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -64,7 +64,7 @@ public class TankShoot : MonoBehaviour
         //if(!isReloading){
             //isReloading = true;
             m_Fired = true;                                                                                     // Set the fired flag so Fire is only called once.
-            Rigidbody shellInstance = (objectPool.spawner("shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
+            Rigidbody shellInstance = (objectPool.spawner("Shell",m_FireTransform)).GetComponent<Rigidbody>();  //get Rigidbody Component from Object Instance
             shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;                            // Set the shell's velocity 
         //}
 

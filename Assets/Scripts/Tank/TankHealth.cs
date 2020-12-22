@@ -16,12 +16,10 @@ public class TankHealth : MonoBehaviour, IDamagable
     protected ParticleSystem explosionPrefab;
     protected Coroutine explosionCoroutine=null;
 
-  
-
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
     protected float CurrentHealth;
-    protected bool IsDead;
+    internal bool IsDead;
  
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
@@ -62,8 +60,7 @@ public class TankHealth : MonoBehaviour, IDamagable
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 //``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
-    protected void PlayerDead()
-    {
+    protected virtual void PlayerDead(){
         IsDead = true;
         if(explosionCoroutine==null){
             explosionCoroutine = StartCoroutine(playerDeathEffects());
@@ -87,9 +84,6 @@ public class TankHealth : MonoBehaviour, IDamagable
     protected IEnumerator playerDeathEffects(){
         
         yield return StartCoroutine(playExplosionParticleSystem());
-        //enemy.CleanSlate();
-        //levelTerrain.CleanSlate();
-
         gameObject.SetActive(false);
         explosionCoroutine = null;
     }    
